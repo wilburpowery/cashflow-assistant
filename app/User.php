@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Get name accessor.
+     *
+     * @return mix
+     */
     public function getNameAttribute()
     {
         return $this->name;
