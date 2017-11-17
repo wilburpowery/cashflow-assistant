@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get name accessor.
+     * Get the name of the user.
      *
      * @return mix
      */
