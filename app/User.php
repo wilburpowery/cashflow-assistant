@@ -32,8 +32,8 @@ class User extends Authenticatable
      *
      * @return mix
      */
-    public function getNameAttribute()
+    public function getNameAttribute($value)
     {
-        return $this->name;
+        return $value;
     }
 }
