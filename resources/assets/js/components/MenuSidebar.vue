@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="http://www.activprayer.com/media/profile_images/default.png" alt="User Image" style="width: 50px; height: 50px; border-radius: 100%;"> <span>{{ user.name }}</span>
+    <img src="http://www.activprayer.com/media/profile_images/default.png" alt="User Image" style="width: 50px; height: 50px; border-radius: 100%;"> <span v-text="user.name"></span>
     <hr>
     <ul class="list-group">
         <router-link tag="li" to="/dashboard" class="list-group-item">
@@ -31,13 +31,12 @@
 </div>
 </template>
 <script>
+import {mapState} from 'vuex';
 export default {
     computed: {
-        user() {
-            return window.App.user;
-        }
+        ...mapState(['user'])
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>
