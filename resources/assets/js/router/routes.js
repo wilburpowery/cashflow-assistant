@@ -1,6 +1,9 @@
-import Dashboard from '../pages/Dashboard.vue';
-import CashflowEntry from '../pages/CashflowEntry.vue';
-import CashflowOut from '../pages/CashflowOut.vue';
+import DashboardPage from '../pages/Dashboard.vue';
+import CashflowEntryPage from '../pages/CashflowEntry.vue';
+import CashflowOutPage from '../pages/CashflowOut.vue';
+import ProfilePage from '../pages/Profile.vue';
+import AccountingPage from '../pages/Accounting.vue';
+import SettingsPage from '../pages/Settings.vue';
 import Error404 from '../pages/errors/Error404.vue';
 
 const routes = [
@@ -11,17 +14,32 @@ const routes = [
     {
         path: '/dashboard',
         name: 'Dashboard',
-        component: Dashboard
+        component: DashboardPage
     },
     {
         path: '/income',
         name: 'Income',
-        component: CashflowEntry
+        component: CashflowEntryPage
     },
     {
         path: '/expenses',
         name: 'Expenses',
-        component: CashflowOut
+        component: CashflowOutPage
+    },
+    {
+        path: '/profile',
+        name: 'Profile',
+        component: ProfilePage
+    },
+    {
+        path: '/accounting',
+        name: 'Accounting',
+        component: AccountingPage
+    },
+    {
+        path: '/settings',
+        name: 'Settings',
+        component: SettingsPage
     },
     {
         path: '*',
