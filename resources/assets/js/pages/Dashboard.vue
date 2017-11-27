@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <h4>Registra un nuevo movimiento</h4>
+      <application-layout>
+          <h1 slot="header">Dashboard</h1>
             <form action="#">
                 <div class="form-group">
                     <label for="description">Descripción</label>
@@ -14,12 +14,11 @@
                     <button class="btn btn-primary">Guardar</button>
                 </div>
             </form>
-  </div>
+      </application-layout>
 </template>
 
 <script>
 export default {
-  
 }
 </script>
 
