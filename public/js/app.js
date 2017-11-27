@@ -46379,7 +46379,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "\n.list-group-item[data-v-36dc4216] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border: none;\n  background-color: transparent;\n  font-size: 1.2em;\n  padding-left: 0;\n}\n.list-group-item[data-v-36dc4216]:hover {\n    cursor: pointer;\n    color: green;\n}\n.list-group-item:hover svg[data-v-36dc4216] {\n      fill: green;\n}\n.list-group-item svg[data-v-36dc4216] {\n    margin-right: 10px;\n    width: 20px;\n    height: auto;\n    fill: #8d8d8d;\n}\n.router-link-active[data-v-36dc4216] {\n  color: green;\n}\n.router-link-active svg[data-v-36dc4216] {\n    fill: green;\n}\n", ""]);
+exports.push([module.i, "\n.list-group-item[data-v-36dc4216] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border: none;\n  background-color: transparent;\n  font-size: 1.2em;\n  padding-left: 0;\n  opacity: .7;\n}\n.list-group-item[data-v-36dc4216]:hover {\n    cursor: pointer;\n    color: green;\n    opacity: 1;\n}\n.list-group-item:hover svg[data-v-36dc4216] {\n      fill: green;\n}\n.list-group-item svg[data-v-36dc4216] {\n    margin-right: 10px;\n    width: 20px;\n    height: auto;\n    fill: #8d8d8d;\n}\n.router-link-active[data-v-36dc4216] {\n  color: green;\n  opacity: 1;\n}\n.router-link-active svg[data-v-36dc4216] {\n    fill: green;\n}\n", ""]);
 
 // exports
 

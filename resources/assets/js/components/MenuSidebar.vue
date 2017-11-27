@@ -40,10 +40,12 @@ export default {};
     background-color: transparent;
     font-size: 1.2em;
     padding-left: 0;
+    opacity: .7;
 
     &:hover {
         cursor: pointer;
         color: green;
+        opacity: 1;
 
         svg {
             fill: green;
@@ -59,6 +61,7 @@ export default {};
 }
 .router-link-active {
     color: green;
+    opacity: 1;
 
     svg {
         fill: green;
