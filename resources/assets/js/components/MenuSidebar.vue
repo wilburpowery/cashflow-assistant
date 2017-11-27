@@ -1,0 +1,63 @@
+<template>
+  <div>
+      <h2>Menu</h2>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm-5.6-4.29a9.95 9.95 0 0 1 11.2 0 8 8 0 1 0-11.2 0zm6.12-7.64l3.02-3.02 1.41 1.41-3.02 3.02a2 2 0 1 1-1.41-1.41z"/></svg>
+                    Dashboard
+                </li>
+                <li class="list-group-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm1-5h1a3 3 0 0 0 0-6H7.99a1 1 0 0 1 0-2H14V5h-3V3H9v2H8a3 3 0 1 0 0 6h4a1 1 0 1 1 0 2H6v2h3v2h2v-2z"/></svg>                    
+                    Ingresos
+                </li>                
+                <li class="list-group-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm1-5h1a3 3 0 0 0 0-6H7.99a1 1 0 0 1 0-2H14V5h-3V3H9v2H8a3 3 0 1 0 0 6h4a1 1 0 1 1 0 2H6v2h3v2h2v-2z"/></svg>                    
+                    Egresos
+                </li>
+                <li class="list-group-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zM7 6v2a3 3 0 1 0 6 0V6a3 3 0 1 0-6 0zm-3.65 8.44a8 8 0 0 0 13.3 0 15.94 15.94 0 0 0-13.3 0z"/></svg>                    
+                    Perfíl
+                </li>
+                <li class="list-group-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 4c0-1.1.9-2 2-2h15a1 1 0 0 1 1 1v1H2v1h17a1 1 0 0 1 1 1v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm16.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+                    Caja
+                </li>
+                <li class="list-group-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M6.47 9.8A5 5 0 0 1 .2 3.22l3.95 3.95 2.82-2.83L3.03.41a5 5 0 0 1 6.4 6.68l10 10-2.83 2.83L6.47 9.8z"/></svg>
+                    Configuración
+                </li>
+            </ul>
+  </div>
+</template>
+<script>
+export default {};
+</script>
+
+<style lang="scss" scoped>
+.list-group-item {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2em;
+    padding-left: 0;
+
+    &:hover {
+        cursor: pointer;
+        color: green;
+
+        svg {
+            fill: green;
+        }
+    }
+
+    svg {
+        margin-right: 10px;
+        width: 20px;
+        height: auto;
+        fill: #8d8d8d;
+    }
+}
+</style>
+
+
