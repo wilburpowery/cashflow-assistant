@@ -46379,7 +46379,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "\n.list-group-item[data-v-36dc4216] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border: none;\n  background-color: transparent;\n  font-size: 1.2em;\n  padding-left: 0;\n  opacity: .7;\n}\n.list-group-item[data-v-36dc4216]:hover {\n    cursor: pointer;\n    color: green;\n    opacity: 1;\n}\n.list-group-item:hover svg[data-v-36dc4216] {\n      fill: green;\n}\n.list-group-item svg[data-v-36dc4216] {\n    margin-right: 10px;\n    width: 20px;\n    height: auto;\n    fill: #8d8d8d;\n}\n.router-link-active[data-v-36dc4216] {\n  color: green;\n  opacity: 1;\n}\n.router-link-active svg[data-v-36dc4216] {\n    fill: green;\n}\n", ""]);
+exports.push([module.i, "\n.list-group-item[data-v-36dc4216] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  border: none;\n  background-color: transparent;\n  font-size: 1.2em;\n  padding-left: 0;\n  opacity: .7;\n}\n.list-group-item[data-v-36dc4216]:hover {\n    cursor: pointer;\n    color: green;\n    opacity: 1;\n}\n.list-group-item:hover svg[data-v-36dc4216] {\n      fill: green;\n}\n.list-group-item svg[data-v-36dc4216] {\n    margin-right: 10px;\n    width: 20px;\n    height: auto;\n    fill: #8d8d8d;\n}\n.router-link-active[data-v-36dc4216] {\n  color: green;\n  opacity: 1;\n}\n.router-link-active svg[data-v-36dc4216] {\n    fill: green;\n}\nhr[data-v-36dc4216] {\n  border-top: 1px solid #bbb2b2;\n  margin: .9em 0em;\n}\n", ""]);
 
 // exports
 
@@ -46420,8 +46420,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    computed: {
+        user: function user() {
+            return window.App.user;
+        }
+    }
+});
 
 /***/ }),
 /* 64 */
@@ -46432,6 +46440,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("img", {
+      staticStyle: { width: "50px", height: "50px", "border-radius": "100%" },
+      attrs: {
+        src: "http://www.activprayer.com/media/profile_images/default.png",
+        alt: "User Image"
+      }
+    }),
+    _vm._v(" "),
+    _c("span", [_vm._v(_vm._s(_vm.user.name))]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
     _c(
       "ul",
       { staticClass: "list-group" },

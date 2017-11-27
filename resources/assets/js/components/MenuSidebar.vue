@@ -1,5 +1,7 @@
 <template>
   <div>
+    <img src="http://www.activprayer.com/media/profile_images/default.png" alt="User Image" style="width: 50px; height: 50px; border-radius: 100%;"> <span>{{ user.name }}</span>
+    <hr>
     <ul class="list-group">
         <router-link tag="li" to="/dashboard" class="list-group-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm-5.6-4.29a9.95 9.95 0 0 1 11.2 0 8 8 0 1 0-11.2 0zm6.12-7.64l3.02-3.02 1.41 1.41-3.02 3.02a2 2 0 1 1-1.41-1.41z"/></svg>
@@ -29,7 +31,13 @@
 </div>
 </template>
 <script>
-export default {};
+export default {
+    computed: {
+        user() {
+            return window.App.user;
+        }
+    }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -66,6 +74,10 @@ export default {};
     svg {
         fill: green;
     }
+}
+hr {
+    border-top: 1px solid #bbb2b2;
+    margin: .9em 0em;
 }
 </style>
 
