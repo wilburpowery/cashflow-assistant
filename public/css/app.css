@@ -8354,3 +8354,14 @@ body {
   background-color: #ebebeb;
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
