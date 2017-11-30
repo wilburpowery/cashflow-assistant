@@ -17,4 +17,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('businesses', 'BusinessesController@store')->name('businesses.store');
+
 Route::get('{view}', 'HomeController@index')->where('view', '(.*)');
