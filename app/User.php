@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'business_id',
+        'name', 'email', 'password', 'business_id', 'is_admin',
     ];
 
     /**
@@ -25,6 +25,10 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
+    ];
+
+    protected $casts = [
+        'is_admin' => 'boolean'
     ];
 
     /**
