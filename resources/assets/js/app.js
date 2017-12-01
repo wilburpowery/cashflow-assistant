@@ -8,6 +8,7 @@ import router from './router';
 import store from './store';
 
 Vue.component('application-layout', require('./layouts/ApplicationView.vue'));
+Vue.component('registration-form', require('./components/Auth/Register.vue'));
 
 import MenuSidebar from './components/MenuSidebar.vue';
 import ActivitySidebar from './components/ActivitySidebar.vue';
