@@ -31,13 +31,8 @@ class User extends Authenticatable
         'is_admin' => 'boolean'
     ];
 
-    /**
-     * Get the name of the user.
-     *
-     * @return mix
-     */
-    public function getNameAttribute($value)
+    public function business()
     {
-        return $value;
+        return $this->belongsTo(Business::class);
     }
 }

@@ -1,6 +1,9 @@
 import DashboardPage from '../pages/Dashboard.vue';
 import CashflowEntryPage from '../pages/CashflowEntry.vue';
 import CashflowOutPage from '../pages/CashflowOut.vue';
+import ClientsIndexPage from '../pages/clients/Index.vue';
+import ClientsCreatePage from '../pages/clients/Create.vue';
+import ClientsShowPage from '../pages/clients/Show.vue';
 import ProfilePage from '../pages/Profile.vue';
 import AccountingPage from '../pages/Accounting.vue';
 import SettingsPage from '../pages/Settings.vue';
@@ -25,6 +28,22 @@ const routes = [
         path: '/expenses',
         name: 'Expenses',
         component: CashflowOutPage
+    },
+    {
+        path: '/clients',
+        name: 'clients.index',
+        component: ClientsIndexPage
+    },
+    {
+        path: '/clients/create',
+        name: 'clients.create',
+        component: ClientsCreatePage
+    },
+    {
+        path: '/clients/:id',
+        name: 'clients.show',
+        component: ClientsShowPage,
+        props: true
     },
     {
         path: '/profile',

@@ -17,6 +17,11 @@ class Business extends Model
         return $this->hasMany(User::class);
     }
 
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
+
     /**
      * Daily Budgets relationship
      */
@@ -31,5 +36,15 @@ class Business extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function addClient($data)
+    {
+        return $this->clients()->create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'phone_number' => $data['phone_number']
+        ]);
     }
 }

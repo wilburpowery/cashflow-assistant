@@ -19,4 +19,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('businesses', 'BusinessesController@store')->name('businesses.store');
 
+Route::get('/clients', 'ClientsController@index')->name('clients.index')->middleware('auth');
+Route::get('/clients/{id}', 'ClientsController@show')->name('clients.show')->middleware('auth');
+Route::post('/clients', 'ClientsController@store')->name('clients.store')->middleware('auth');
+
 Route::get('{view}', 'HomeController@index')->where('view', '(.*)');
