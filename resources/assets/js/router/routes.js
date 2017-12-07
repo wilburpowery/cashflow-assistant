@@ -1,5 +1,6 @@
 import DashboardPage from '../pages/Dashboard.vue';
 import CashflowEntryPage from '../pages/CashflowEntry.vue';
+import IncomeCreatePage from '../pages/incomes/Add.vue';
 import CashflowOutPage from '../pages/CashflowOut.vue';
 import ClientsIndexPage from '../pages/clients/Index.vue';
 import ClientsCreatePage from '../pages/clients/Create.vue';
@@ -21,8 +22,13 @@ const routes = [
     },
     {
         path: '/income',
-        name: 'Income',
+        name: 'incomes.index',
         component: CashflowEntryPage
+    },
+    {
+        path: '/income/create',
+        name: 'income.create',
+        component: IncomeCreatePage
     },
     {
         path: '/expenses',

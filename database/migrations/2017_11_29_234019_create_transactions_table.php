@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('business_id');
             $table->longText('description');
             $table->bigInteger('total');
+            $table->string('type');
             $table->string('transaction_type', 20);
             $table->timestamps();
         });
