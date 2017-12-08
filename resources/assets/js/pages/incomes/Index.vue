@@ -15,6 +15,7 @@
             <th>Tipo</th>
             <th>Detalle</th>
             <th>Total</th>
+            <th>Tiempo</th>
             <th></th>
           </tr>
         </thead>
@@ -24,10 +25,11 @@
             <td v-text="income.type"></td>
             <td v-text="income.description"></td>
             <td>{{ income.total | toMoney}}</td>
+            <td> {{ income.created_at | formatFromTime }}</td>
             <td>
               <div class="actions">
                   <button class="btn btn-primary" @click="gotoIncome(income)">Ver</button>
-                  <button class="btn btn-danger">Borrar</button>
+                  <button class="btn btn-danger" @click="destroy(income)">Borrar</button>
               </div>
             </td>
           </tr>
@@ -53,6 +55,9 @@ export default {
   filters: {
     toMoney(value) {
       return window.accounting.formatMoney(value, {symbol: 'CRC', format: '%v %s'}, 2);
+    },
+    formatFromTime(time) {
+      return window.moment(time).fromNow();
     }
   },
   
@@ -66,6 +71,19 @@ export default {
 
     gotoIncome(income) {
       this.router.push({name: 'incomes.show', params: {id: income.id, income: income}});
+    },
+
+    destroy(income) {
+      Alert.warning('Estas seguro de borrar el ingreso?')
+        .then((message) => {
+          axios.delete(`/incomes/${income.id}`)
+            .then(response => {
+              this.incomes.splice(this.incomes.indexOf(income), 1);
+              Alert.success('Ingreso borrado');
+            }).catch(error => {
+              console.log('Error');
+            })
+        })
     }
   }
 }

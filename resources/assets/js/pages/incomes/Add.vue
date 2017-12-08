@@ -12,7 +12,13 @@
                     <div class="form-group">
                         <label for="type" class="col-sm-2 control-label">Tipo</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="income.type" required>
+                            <select class="form-control" v-model="income.type">
+                                <option value="" selected="selected">Seleccione --</option>
+                                <option value="sales">Ventas</option>
+                                <option value="commissions">Comisiones</option>
+                                <option value="cash">Efectivo para cajas</option>
+                                <option value="other">Otro</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

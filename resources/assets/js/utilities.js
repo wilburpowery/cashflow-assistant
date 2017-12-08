@@ -8,5 +8,23 @@ export class Alert {
             type: 'success',
             confirmButtonText
         });
-    }       
+    }
+    
+    static warning(title = 'Estas seguro?', text = 'No podras revertir esta acción!', confirmButtonText = 'Si') {
+        return new Promise((resolve, reject) => {
+            swal({
+                title,
+                text,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText
+            }).then(result => {
+                if(result.value) {
+                    resolve('done');
+                }
+            })
+        })
+    }
 }

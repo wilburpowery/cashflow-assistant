@@ -12,6 +12,7 @@ class IncomesController extends Controller
         return Transaction::where('transaction_type', 'App\Income')
                             ->where('business_id', auth()->user()->business->id)
                             ->whereDate('created_at', now()->toDateString())
+                            ->orderBy('created_at', 'desc')
                             ->get();
     }
 
@@ -29,5 +30,14 @@ class IncomesController extends Controller
             'total' => $data['total'],
             'transaction_type' => 'App\Income'
         ]);
+    }
+
+    public function destroy(Transaction $income)
+    {
+        $this->authorize('delete', $income);
+
+        $income->delete();
+
+        return response('Deleted', 202);
     }
 }
