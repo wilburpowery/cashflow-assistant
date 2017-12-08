@@ -23,6 +23,7 @@ Route::get('/clients', 'ClientsController@index')->name('clients.index')->middle
 Route::get('/clients/{id}', 'ClientsController@show')->name('clients.show')->middleware('auth');
 Route::post('/clients', 'ClientsController@store')->name('clients.store')->middleware('auth');
 
+Route::get('/incomes', 'IncomesController@index')->name('incomes.index')->middleware('auth');
 Route::post('/incomes', 'IncomesController@store')->name('incomes.store')->middleware('auth');
 
 Route::get('{view}', 'HomeController@index')->where('view', '(.*)');

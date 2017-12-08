@@ -1,14 +1,3 @@
-import DashboardPage from '../pages/Dashboard.vue';
-import CashflowEntryPage from '../pages/CashflowEntry.vue';
-import IncomeCreatePage from '../pages/incomes/Add.vue';
-import CashflowOutPage from '../pages/CashflowOut.vue';
-import ClientsIndexPage from '../pages/clients/Index.vue';
-import ClientsCreatePage from '../pages/clients/Create.vue';
-import ClientsShowPage from '../pages/clients/Show.vue';
-import ProfilePage from '../pages/Profile.vue';
-import AccountingPage from '../pages/Accounting.vue';
-import SettingsPage from '../pages/Settings.vue';
-import Error404 from '../pages/errors/Error404.vue';
 
 const routes = [
     {
@@ -18,58 +7,64 @@ const routes = [
     {
         path: '/dashboard',
         name: 'Dashboard',
-        component: DashboardPage
+        component: require('../pages/Dashboard.vue')
     },
     {
         path: '/income',
         name: 'incomes.index',
-        component: CashflowEntryPage
+        component: require('../pages/incomes/Index.vue')
     },
     {
         path: '/income/create',
         name: 'income.create',
-        component: IncomeCreatePage
+        component: require('../pages/incomes/Add.vue')
+    },
+    {
+        path: '/income/:id',
+        name: 'incomes.show',
+        component: require('../pages/incomes/Show.vue'),
+        props: true
     },
     {
         path: '/expenses',
         name: 'Expenses',
-        component: CashflowOutPage
+        component: require('../pages/CashflowOut.vue')
     },
     {
         path: '/clients',
         name: 'clients.index',
-        component: ClientsIndexPage
+        component: require('../pages/clients/Index.vue')
     },
     {
         path: '/clients/create',
         name: 'clients.create',
-        component: ClientsCreatePage
+        component: require('../pages/clients/Create.vue')
     },
     {
         path: '/clients/:id',
         name: 'clients.show',
-        component: ClientsShowPage,
+        component: require('../pages/clients/Show.vue'),
         props: true
     },
     {
         path: '/profile',
         name: 'Profile',
-        component: ProfilePage
+        component: require('../pages/Profile.vue')
     },
     {
         path: '/accounting',
         name: 'Accounting',
-        component: AccountingPage
+        component: require('../pages/Accounting.vue')
     },
     {
         path: '/settings',
         name: 'Settings',
-        component: SettingsPage
+        component: require('../pages/Settings.vue')
     },
     {
         path: '*',
         name: '404',
-        component: Error404
+        component: require('../pages/errors/Error404.vue')
     }
 ];
 

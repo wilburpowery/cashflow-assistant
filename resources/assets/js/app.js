@@ -4,6 +4,8 @@ window.Vue = require('vue');
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
+window.accounting = require('accounting');
+
 import router from './router';
 import store from './store';
 
