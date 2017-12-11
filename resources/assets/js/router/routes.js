@@ -20,12 +20,6 @@ const routes = [
         component: require('../pages/incomes/Add.vue')
     },
     {
-        path: '/income/:id',
-        name: 'incomes.show',
-        component: require('../pages/incomes/Show.vue'),
-        props: true
-    },
-    {
         path: '/expenses',
         name: 'Expenses',
         component: require('../pages/CashflowOut.vue')

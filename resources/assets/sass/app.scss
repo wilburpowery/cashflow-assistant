@@ -9,7 +9,11 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 body {
-    background-color: #ebebeb;
+    background-color: #EDF0F5;
+}
+
+.navbar {
+  padding: 1em 0em;
 }
 
 .fade-enter-active, .fade-leave-active {

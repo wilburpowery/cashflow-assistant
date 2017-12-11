@@ -44,6 +44,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../sass/variables";
 .list-group-item {
     display: flex;
     align-items: center;
@@ -51,15 +52,14 @@ export default {
     background-color: transparent;
     font-size: 1.2em;
     padding-left: 0;
-    opacity: .7;
 
     &:hover {
         cursor: pointer;
-        color: green;
+        color: $brand-primary;
         opacity: 1;
 
         svg {
-            fill: green;
+            fill: $brand-primary;
         }
     }
 
@@ -67,15 +67,15 @@ export default {
         margin-right: 10px;
         width: 20px;
         height: auto;
-        fill: #8d8d8d;
+        fill: #c1c1c1;
     }
 }
 .router-link-active {
-    color: green;
+    color: $brand-primary;
     opacity: 1;
 
     svg {
-        fill: green;
+        fill: $brand-primary;
     }
 }
 hr {
