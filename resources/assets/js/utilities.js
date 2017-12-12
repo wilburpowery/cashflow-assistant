@@ -27,4 +27,13 @@ export class Alert {
             })
         })
     }
+
+    static error(title = 'Oops...', text = 'Ocurrio un error. Intenta nuevamente!', confirmButtonText = 'Ok') {
+        return swal({
+            title,
+            text,
+            type: 'error',
+            confirmButtonText
+        });
+    }
 }

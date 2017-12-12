@@ -6,42 +6,43 @@
         <router-link class="btn btn-primary pull-right" :to="{ name: 'income.create' }">Nuevo Ingreso <i class="fa fa-plus"></i></router-link>
       </div>
     </div>
-    <h4>Ingresos recientes</h4>
-    
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Tipo</th>
-          <th>Detalle</th>
-          <th>Total</th>
-          <th>Tiempo</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="income in incomes" :key="income.id" class="income-item">
-          <td v-text="income.id"></td>
-          <td> {{ types[income.type] }}</td>
-          <td v-text="income.description"></td>
-          <td>{{ income.total | toMoney}}</td>
-          <td> {{ income.created_at | formatFromTime }}</td>
-          <td>
-            <div class="actions">
-              <i class="fa fa-pencil text-primary icon"></i>
+    <h4>Ingresos del día</h4>
+    <div class="table-responsive">
+      <div class="row" id="headings">
+        <div class="col-md-1 text-center justify-content-center">ID</div>
+        <div class="col-md-2">Tipo</div>
+        <div class="col-md-3">Detalle</div>
+        <div class="col-md-2">Total</div>
+        <div class="col-md-2">Tiempo</div>          
+        <div class="col-md-2 text-center">Acción</div>
+      </div>
+      
+      <div class="row" v-for="income in incomes" :key="income.id">
+        <div class="col-md-12">
+          <div class="row income-item">
+            <div class="col-md-1 text-center" v-text="income.id"></div>
+            <div class="col-md-2">{{ types[income.type] }}</div>
+            <div class="col-md-3" v-text="income.description"></div>
+            <div class="col-md-2">{{ income.total | toMoney}}</div>
+            <div class="col-md-2">{{ income.created_at | formatFromTime }}</div>
+            <div class="col-md-2 actions text-center">
+              <i class="fa fa-pencil text-primary icon" @click="showIncome(income)"></i>
               <i class="fa fa-trash text-danger icon icon-danger" @click="destroy(income)"></i>
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    
+          </div>
+        </div>
+      </div>
+    </div>
   </application-layout>
 </template>
 
 <script>
   import {Alert} from '../../utilities';
+  import IncomeItem from './Show.vue';
+  
   export default {
+    components: {IncomeItem},
+    
     created() {
       this.fetchIncomes();
     },
@@ -54,7 +55,7 @@
           "commissions": "Comisiones",
           "cash": "Efectivo para cajas",
           "other": "Otro"
-        }
+        },
       }
     }, 
     
@@ -75,7 +76,8 @@
         }).catch(error => console.log(error));
       },
       
-      gotoIncome(income) {
+      showIncome(income) {
+        this.$router.push({name: 'incomes.show', params: {id: income.id, income: income}});
       },
       
       destroy(income) {
@@ -95,17 +97,28 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../../../sass/variables";
-  .table {
-    margin-top: 2em;
-    margin-bottom: 0;
-    
-    thead tr th {
-      background-color: $brand-success;
-      color: #fff;
-    }
+  @import "../../../sass/variables";    
+
+  .justify-content-center {
+    justify-content: center;
+  }
+  #headings div {
+    background-color: $brand-success;
+    color: #fff;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .income-item:hover {
+      background-color: #f7f6f6;
   }
   .income-item {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #e3e3e3;
+      min-height: 50px;
+
     &:hover {
       cursor: pointer;
     }
@@ -124,16 +137,16 @@
     font-size: 1.4em;
     margin-right: 5px;
     background-color: $brand-primary;
-    padding: 5px;
+    padding: 7px;
     color: #fff;
     border-radius: 100%;
-    font-size: 1.2em;
-
+    font-size: 14px;
+    
     &:hover {
       cursor: pointer;
     }
   }
-
+  
   .icon-danger {
     background-color: $brand-danger;
   }

@@ -10,14 +10,14 @@ class TransactionPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function view(User $user, Transaction $transaction)
     {
-        //
+        return $user->business->id == $transaction->business_id;
+    }
+
+    public function update(User $user, Transaction $transaction)
+    {
+        return $user->business->id == $transaction->business_id;
     }
 
     public function delete(User $user, Transaction $transaction)

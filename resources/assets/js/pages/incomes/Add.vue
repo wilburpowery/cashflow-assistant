@@ -8,6 +8,16 @@
         </div>
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
+                <div class="alert alert-danger" v-if="errors">
+                    <ul>
+                        <li v-for="(value, key) in errors">
+                            {{ key }}
+                            <ul>
+                                <li v-for="message in value" v-text="message"></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
                 <form class="form-horizontal" @submit.prevent="submit">
                     <div class="form-group">
                         <label for="type" class="col-sm-2 control-label">Tipo</label>
@@ -45,11 +55,11 @@
 </template>
 
 <script>
-    import {Alert} from '../../utilities';
     export default {
         data() {
             return {
-                income: {}
+                income: {},
+                errors: null
             }
         },
         
@@ -57,11 +67,14 @@
             submit() {
                 axios.post('/incomes', this.income)
                 .then(response => {
-                    Alert.success('Se ha guardado el movimiento')
+                    this.Alert.success('Se ha guardado el movimiento')
                     .then(() => {
                         this.income = {};
                         this.router.push({name: 'incomes.index'});
                     });
+                }).catch(error => {
+                    this.errors = error.response.data.errors;
+                    this.Alert.error();
                 })
             }
         }

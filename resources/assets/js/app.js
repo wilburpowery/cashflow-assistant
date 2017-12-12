@@ -10,13 +10,15 @@ window.accounting = require('accounting');
 
 import router from './router';
 import store from './store';
+import MenuSidebar from './components/MenuSidebar.vue';
+import ActivitySidebar from './components/ActivitySidebar.vue';
 
 Vue.component('application-layout', require('./layouts/ApplicationView.vue'));
 Vue.component('registration-form', require('./components/Auth/Register.vue'));
 Vue.component('back-button', require('./components/BackButton.vue'));
 
-import MenuSidebar from './components/MenuSidebar.vue';
-import ActivitySidebar from './components/ActivitySidebar.vue';
+// Global Event Bus
+window.Events = new Vue();
 
 // Add the router to every vue instance.
 Vue.prototype.router = router;
@@ -24,6 +26,9 @@ Vue.prototype.router = router;
 Vue.prototype.goBack = () => {
     router.go(-1);
 };
+    
+import {Alert} from './utilities';
+Vue.prototype.Alert = Alert;
 
 const app = new Vue({
     created() {

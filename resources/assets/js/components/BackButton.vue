@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-info btn-small" id="backButton" @click="goBack"><i class="fa fa-backward"></i> Volver</button>    
+    <button class="btn btn-info btn-small" id="backButton" @click="goBack"><i class="fa fa-backward"></i></button>    
 </template>
 
 <style lang="scss">
