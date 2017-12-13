@@ -1,6 +1,6 @@
 <template>
     <application-layout>
-        <h1 slot="header">Mis Clientes</h1>
+        <h1 slot="header">Clientes</h1>
 
         <div class="row">
             <div class="col-md-12">

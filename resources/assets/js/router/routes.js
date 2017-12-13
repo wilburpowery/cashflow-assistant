@@ -10,13 +10,13 @@ const routes = [
         component: require('../pages/Dashboard.vue')
     },
     {
-        path: '/income',
+        path: '/incomes',
         name: 'incomes.index',
         component: require('../pages/incomes/Index.vue')
     },
     {
-        path: '/income/create',
-        name: 'income.create',
+        path: '/incomes/create',
+        name: 'incomes.create',
         component: require('../pages/incomes/Add.vue')
     },
     {
@@ -27,8 +27,19 @@ const routes = [
     },
     {
         path: '/expenses',
-        name: 'Expenses',
-        component: require('../pages/CashflowOut.vue')
+        name: 'expenses.index',
+        component: require('../pages/expenses/Index.vue')
+    },
+    {
+        path: '/expenses/create',
+        name: 'expenses.create',
+        component: require('../pages/expenses/Add.vue')
+    },
+    {
+        path: '/expenses/:id',
+        name: 'expenses.show',
+        component: require('../pages/expenses/Show.vue'),
+        props: true,
     },
     {
         path: '/clients',

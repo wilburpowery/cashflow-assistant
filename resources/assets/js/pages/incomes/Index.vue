@@ -3,18 +3,18 @@
     <h1 slot="header">Ingresos</h1>
     <div class="row">
       <div class="col-md-12">
-        <router-link class="btn btn-primary pull-right" :to="{ name: 'income.create' }">Nuevo Ingreso <i class="fa fa-plus"></i></router-link>
+        <router-link class="btn btn-primary pull-right" :to="{ name: 'incomes.create' }">Nuevo Ingreso <i class="fa fa-plus"></i></router-link>
       </div>
     </div>
     <h4>Ingresos del día</h4>
     <div class="table-responsive">
       <div class="row" id="headings">
-        <div class="col-md-1 text-center justify-content-center">ID</div>
-        <div class="col-md-2">Tipo</div>
-        <div class="col-md-3">Detalle</div>
-        <div class="col-md-2">Total</div>
-        <div class="col-md-2">Tiempo</div>          
-        <div class="col-md-2 text-center">Acción</div>
+        <div class="col-xs-1 text-center justify-content-center">ID</div>
+        <div class="col-xs-2">Tipo</div>
+        <div class="col-xs-3">Detalle</div>
+        <div class="col-xs-2">Total</div>
+        <div class="col-xs-2">Tiempo</div>          
+        <div class="col-xs-2 text-center">Acción</div>
       </div>
       
       <div class="row" v-for="income in incomes" :key="income.id">

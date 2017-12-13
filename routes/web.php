@@ -29,4 +29,10 @@ Route::post('/incomes', 'IncomesController@store')->name('incomes.store')->middl
 Route::patch('/incomes/{income}', 'IncomesController@update')->name('incomes.update')->middleware('auth');
 Route::delete('/incomes/{income}', 'IncomesController@destroy')->name('incomes.destroy')->middleware('auth');
 
+Route::get('/expenses', 'ExpensesController@index')->name('expenses.index')->middleware('auth');
+Route::get('/expenses/{income}', 'ExpensesController@show')->name('expenses.show')->middleware('auth');
+Route::post('/expenses', 'ExpensesController@store')->name('expenses.store')->middleware('auth');
+Route::patch('/expenses/{income}', 'ExpensesController@update')->name('expenses.update')->middleware('auth');
+Route::delete('/expenses/{income}', 'ExpensesController@destroy')->name('expenses.destroy')->middleware('auth');
+
 Route::get('{view}', 'HomeController@index')->where('view', '(.*)');
