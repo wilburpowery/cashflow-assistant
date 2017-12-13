@@ -7,7 +7,6 @@
       </div>
     </div>
     <h4>Ingresos del día</h4>
-    <div class="table-responsive">
       <div class="row" id="headings">
         <div class="col-xs-1 text-center justify-content-center">ID</div>
         <div class="col-xs-2">Tipo</div>
@@ -32,7 +31,6 @@
           </div>
         </div>
       </div>
-    </div>
   </application-layout>
 </template>
 

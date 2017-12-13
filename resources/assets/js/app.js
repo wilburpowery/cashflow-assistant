@@ -16,6 +16,7 @@ import ActivitySidebar from './components/ActivitySidebar.vue';
 Vue.component('application-layout', require('./layouts/ApplicationView.vue'));
 Vue.component('registration-form', require('./components/Auth/Register.vue'));
 Vue.component('back-button', require('./components/BackButton.vue'));
+Vue.component('paginator', require('./components/Paginator.vue'));
 
 // Global Event Bus
 window.Events = new Vue();

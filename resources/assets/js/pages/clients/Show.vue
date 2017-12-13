@@ -8,13 +8,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="last_name">Nombre:</label>
-                        <input type="text" class="form-control" v-model="client.first_name" required :disabled="! editing">
+                        <input type="text" class="form-control" v-model="client.first_name" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="last_name">Apellido:</label>
-                        <input type="text" class="form-control" v-model="client.last_name" required :disabled="! editing">
+                        <input type="text" class="form-control" v-model="client.last_name" required>
                     </div>
                 </div>
             </div>
@@ -22,22 +22,18 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email">Correo Electronico:</label>
-                        <input type="email" class="form-control" v-model="client.email" required :disabled="! editing">
+                        <input type="email" class="form-control" v-model="client.email" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="phone_number">Numero Telefonico:</label>
-                        <input type="text" class="form-control" v-model="client.phone_number" required :disabled="! editing">
+                        <input type="text" class="form-control" v-model="client.phone_number" required>
                     </div>
                 </div>
             </div>
-            <div v-if="editing">
+            <div class="form-group">
                 <button class="btn btn-success">Actualizar</button>
-                <button class="btn btn-link" @click="editing = false">Cancelar</button>
-            </div>
-            <div class="form-group" v-else>
-                <button class="btn btn-warning" @click="editing = true">Editar</button>
             </div>
         </form>
     </application-layout>
@@ -52,7 +48,6 @@
         data () {
             return {
                 client: [],
-                editing: false
             }
         },
         methods: {
@@ -64,7 +59,12 @@
                     .catch(error => console.log(error));
             },
             update() {
-
+                axios.patch(`/clients/${this.client.id}`, this.client)
+                    .then(response => {
+                        this.Alert.success('Client Actualizado!');
+                    }).catch(error => {
+                        this.Alert.error();
+                    })
             }
         }
     }

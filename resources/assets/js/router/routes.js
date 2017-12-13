@@ -49,7 +49,7 @@ const routes = [
     {
         path: '/clients/create',
         name: 'clients.create',
-        component: require('../pages/clients/Create.vue')
+        component: require('../pages/clients/Add.vue')
     },
     {
         path: '/clients/:id',

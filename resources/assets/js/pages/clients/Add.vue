@@ -54,7 +54,9 @@
                     email: this.client.email,
                     phone_number: this.client.phone_number
                 }).then(response => {
-
+                    this.Alert.success('Cliente guardado!').then(() => {
+                        this.$router.push({name: 'clients.index'});
+                    });
                 }).catch(error => error);
             }
         }
