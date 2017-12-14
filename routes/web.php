@@ -20,7 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('businesses', 'BusinessesController@store')->name('businesses.store');
 
 Route::get('/clients', 'ClientsController@index')->name('clients.index')->middleware('auth');
-Route::get('/clients/{id}', 'ClientsController@show')->name('clients.show')->middleware('auth');
+Route::get('/clients/{client}', 'ClientsController@show')->name('clients.show')->middleware('auth');
 Route::post('/clients', 'ClientsController@store')->name('clients.store')->middleware('auth');
 Route::patch('/clients/{client}', 'ClientsController@update')->name('clients.update')->middleware('auth');
 Route::delete('/clients/{client}', 'ClientsController@destroy')->name('clients.destroy')->middleware('auth');

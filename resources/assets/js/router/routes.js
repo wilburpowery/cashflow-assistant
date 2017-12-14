@@ -63,6 +63,16 @@ const routes = [
         component: require('../pages/Profile.vue')
     },
     {
+        path: '/payments',
+        name: 'payments.index',
+        component: require('../pages/payments/Index.vue')
+    },
+    {
+        path: '/payments/create',
+        name: 'payments.create',
+        component: require('../pages/payments/Add.vue')
+    },
+    {
         path: '/accounting',
         name: 'Accounting',
         component: require('../pages/Accounting.vue')

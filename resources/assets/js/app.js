@@ -12,11 +12,13 @@ import router from './router';
 import store from './store';
 import MenuSidebar from './components/MenuSidebar.vue';
 import ActivitySidebar from './components/ActivitySidebar.vue';
+import vSelect from 'vue-select';
 
 Vue.component('application-layout', require('./layouts/ApplicationView.vue'));
 Vue.component('registration-form', require('./components/Auth/Register.vue'));
 Vue.component('back-button', require('./components/BackButton.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
+Vue.component('vSelect', vSelect);
 
 // Global Event Bus
 window.Events = new Vue();

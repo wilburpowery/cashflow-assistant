@@ -11,8 +11,7 @@
         <h4>Ultimos clientes</h4>
         <div class="row" id="headings">
             <div class="col-xs-1 text-center justify-content-center">ID</div>
-            <div class="col-xs-2">Nombre</div>
-            <div class="col-xs-2">Apellido</div>
+            <div class="col-xs-4">Nombre</div>
             <div class="col-xs-3">Correo Electronico</div>
             <div class="col-xs-2">Telefono</div>            
             <div class="col-xs-2 text-center">Acción</div>
@@ -22,8 +21,7 @@
             <div class="col-md-12">
                 <div class="row list-item">
                     <div class="col-xs-1 text-center justify-content-center" v-text="client.id"></div>
-                    <div class="col-xs-2" v-text="client.first_name"></div>
-                    <div class="col-xs-2" v-text="client.last_name"></div>
+                    <div class="col-xs-4" v-text="client.name"></div>
                     <div class="col-xs-3" v-text="client.email"></div>
                     <div class="col-xs-2" v-text="client.phone_number"></div>
                     <div class="col-md-2 actions text-center">
@@ -34,7 +32,11 @@
             </div>
         </div>
         
-        <paginator :data-set="dataSet" @changed="fetch"></paginator>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <paginator :data-set="dataSet" @changed="fetch"></paginator>
+            </div>
+        </div>
         
     </application-layout>
 </template>
@@ -98,52 +100,5 @@
     .justify-content-center {
         justify-content: center;
     }
-    #headings div {
-        background-color: $brand-success;
-        color: #fff;
-        min-height: 50px;
-        display: flex;
-        align-items: center;
-    }
     
-    .list-item:hover {
-        background-color: #f7f6f6;
-    }
-    .list-item {
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid #e3e3e3;
-        min-height: 50px;
-        
-        &:hover {
-            cursor: pointer;
-        }
-        
-        &:hover .actions {
-            opacity: 1;
-        }
-        
-        .actions {
-            opacity: 0;
-            padding: 5px 30px;
-        }
-    }
-    
-    .icon {
-        font-size: 1.4em;
-        margin-right: 5px;
-        background-color: $brand-primary;
-        padding: 7px;
-        color: #fff;
-        border-radius: 100%;
-        font-size: 14px;
-        
-        &:hover {
-            cursor: pointer;
-        }
-    }
-    
-    .icon-danger {
-        background-color: $brand-danger;
-    }
 </style>

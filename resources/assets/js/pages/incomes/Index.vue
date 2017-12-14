@@ -16,21 +16,24 @@
         <div class="col-xs-2 text-center">Acción</div>
       </div>
       
-      <div class="row" v-for="income in incomes" :key="income.id">
-        <div class="col-md-12">
-          <div class="row income-item">
-            <div class="col-md-1 text-center" v-text="income.id"></div>
-            <div class="col-md-2">{{ types[income.type] }}</div>
-            <div class="col-md-3" v-text="income.description"></div>
-            <div class="col-md-2">{{ income.total | toMoney}}</div>
-            <div class="col-md-2">{{ income.created_at | formatFromTime }}</div>
-            <div class="col-md-2 actions text-center">
-              <i class="fa fa-pencil text-primary icon" @click="showIncome(income)"></i>
-              <i class="fa fa-trash text-danger icon icon-danger" @click="destroy(income)"></i>
+      <template v-if="incomes.length">
+        <div class="row" v-for="income in incomes" :key="income.id">
+          <div class="col-md-12">
+            <div class="row income-item">
+              <div class="col-md-1 text-center" v-text="income.id"></div>
+              <div class="col-md-2">{{ types[income.type] }}</div>
+              <div class="col-md-3" v-text="income.description"></div>
+              <div class="col-md-2">{{ income.total | toMoney}}</div>
+              <div class="col-md-2">{{ income.created_at | formatFromTime }}</div>
+              <div class="col-md-2 actions text-center">
+                <i class="fa fa-pencil text-primary icon" @click="showIncome(income)"></i>
+                <i class="fa fa-trash text-danger icon icon-danger" @click="destroy(income)"></i>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </template>
+      <p v-else class="text-center">No hay ingresos aún.</p>
   </application-layout>
 </template>
 

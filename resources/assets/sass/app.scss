@@ -5,11 +5,12 @@
 // Variables
 @import "variables";
 
+@import "~font-awesome/scss/font-awesome";
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 body {
-    background-color: #EDF0F5;
+  background-color: #EDF0F5;
 }
 
 .navbar {
@@ -17,9 +18,58 @@ body {
 }
 
 .fade-enter-active, .fade-leave-active {
-    transition: opacity 0.2s
+  transition: opacity 0.2s
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+
+#headings div {
+  background-color: $brand-success;
+  color: #fff;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.list-item:hover {
+  background-color: #f7f6f6;
+}
+.list-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e3e3e3;
+  min-height: 50px;
+  
+  &:hover {
+    cursor: pointer;
   }
   
-  .fade-enter, .fade-leave-active {
-    opacity: 0
+  &:hover .actions {
+    opacity: 1;
   }
+  
+  .actions {
+    opacity: 0;
+    padding: 5px 30px;
+  }
+}
+
+.icon {
+  font-size: 1.4em;
+  margin-right: 5px;
+  background-color: $brand-primary;
+  padding: 7px;
+  color: #fff;
+  border-radius: 100%;
+  font-size: 14px;
+  
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.icon-danger {
+  background-color: $brand-danger;
+}

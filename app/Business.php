@@ -41,8 +41,7 @@ class Business extends Model
     public function addClient($data)
     {
         return $this->clients()->create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'phone_number' => $data['phone_number']
         ]);

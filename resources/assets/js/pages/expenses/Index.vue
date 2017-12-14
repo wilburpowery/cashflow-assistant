@@ -7,16 +7,17 @@
       </div>
     </div>
     <h4>Egresos del día</h4>
-
+    
     <div class="row" id="headings">
-        <div class="col-xs-1 text-center justify-content-center">ID</div>
-        <div class="col-xs-2">Tipo</div>
-        <div class="col-xs-3">Detalle</div>
-        <div class="col-xs-2">Total</div>
-        <div class="col-xs-2">Tiempo</div>          
-        <div class="col-xs-2 text-center">Acción</div>
-      </div>
-      
+      <div class="col-xs-1 text-center justify-content-center">ID</div>
+      <div class="col-xs-2">Tipo</div>
+      <div class="col-xs-3">Detalle</div>
+      <div class="col-xs-2">Total</div>
+      <div class="col-xs-2">Tiempo</div>          
+      <div class="col-xs-2 text-center">Acción</div>
+    </div>
+    
+     <template v-if="expenses.length">
       <div class="row" v-for="expense in expenses" :key="expense.id">
         <div class="col-md-12">
           <div class="row expense-item">
@@ -32,6 +33,8 @@
           </div>
         </div>
       </div>
+     </template>
+      <p v-else class="text-center">No hay egresos aún.</p>
     
   </application-layout>
 </template>

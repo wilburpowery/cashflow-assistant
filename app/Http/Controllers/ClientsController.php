@@ -10,7 +10,12 @@ class ClientsController extends Controller
 {
     public function index()
     {
-        $clients = auth()->user()->business->clients()->paginate(10);
+        if ($search = request('q')) {
+            $client = Client::where('name', 'like', "%$search%")->get();
+            return $client;
+        }
+
+        $clients = auth()->user()->business->clients()->orderBy('name')->paginate(10);
 
         return $clients;
     }
@@ -18,8 +23,7 @@ class ClientsController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'first_name' => 'required|string|min:1',
-            'last_name' => 'required|string|min:1',
+            'name' => 'required|string|min:1',
             'email' => [
                 'required',
                 'email',
@@ -35,9 +39,11 @@ class ClientsController extends Controller
         return $client;
     }
 
-    public function show($id)
+    public function show(Client $client)
     {
-        return Client::where('business_id', auth()->user()->business->id)->findOrFail($id);
+        $this->authorize('view', $client);
+
+        return $client;
     }
 
     public function update(Client $client)
@@ -45,8 +51,7 @@ class ClientsController extends Controller
         $this->authorize('update', $client);
 
         $data = request()->validate([
-            'first_name' => 'required|string|min:1',
-            'last_name' => 'required|string|min:1',
+            'name' => 'required|string|min:1',
             'email' => [
                 'required',
                 'email',
