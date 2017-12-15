@@ -48,6 +48,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof DeskWasAlreadyClosed) {
+            return response(['message' => 'Ya existe un cierre de caja para el día.'], 422);
+        }
+
         return parent::render($request, $exception);
     }
 }

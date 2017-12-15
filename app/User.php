@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Exceptions\DeskWasAlreadyClosed;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,30 @@ class User extends Authenticatable
             'total' => $data['total'],
             'description' => $data['description'],
             'payed' => $data['payed']
+        ]);
+    }
+
+    public function closeDesk($data)
+    {
+        if (Desk::hasAlreadyBeenClosed()) {
+            throw new DeskWasAlreadyClosed();
+        }
+
+        return Desk::create([
+            'business_id' => $this->business->id,
+            'initial_balance' => $data['initial_balance'],
+            'income' => $data['income'],
+            'expense' => $data['expense'],
+            'transfers' => $data['transfers'],
+            'card_payments' => $data['card_payments'],
+            'earn_sp' => $data['earn_sp'],
+            'deposit_sp' => $data['deposit_sp'],
+            'commission_sp' => $data['commission_sp'],
+            'refills' => $data['refills'],
+            'commission_refills' => $data['commission_refills'],
+            'cash_box' => $data['cash_box'],
+            'final_balance' => $data['final_balance'],
+            'real_balance' => $data['real_balance']
         ]);
     }
 }

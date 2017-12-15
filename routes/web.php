@@ -46,6 +46,8 @@ Route::delete('/payments/{payment}', 'PaymentsController@destroy')->name('paymen
 Route::get('/daily-budgets', 'DailyBudgetsController@index')->middleware('auth');
 Route::post('daily-budgets', 'DailyBudgetsController@store')->middleware('auth');
 
+Route::post('/desk-close', 'DeskClosesController@store')->middleware('auth');
+
 Route::get('/accounting/data', 'AccountingDataController');
 
 Route::get('{view}', 'HomeController@index')->where('view', '(.*)');

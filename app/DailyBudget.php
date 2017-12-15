@@ -11,7 +11,7 @@ class DailyBudget extends Model
 
     public static function fromToday()
     {
-        return self::whereDate('created_at', Carbon::today())->first();
+        return self::where('business_id', auth()->user()->business->id)->whereDate('created_at', Carbon::today())->first();
     }
 
     /**

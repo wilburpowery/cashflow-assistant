@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use App\DailyBudget;
+use App\Desk;
 
 class AccountingDataController extends Controller
 {
     public function __invoke()
     {
-        $dailyBudget = DailyBudget::fromToday()->only('total');
+        $dailyBudget = DailyBudget::fromToday();
 
         $transactionsToday = Transaction::fromToday()->get();
 
@@ -22,6 +23,7 @@ class AccountingDataController extends Controller
         })->sum('total');
 
         return response([
+            'alreadyHasClosedDesk' => Desk::hasAlreadyBeenClosed(),
             'dailyBudget' => $dailyBudget,
             'income' => $incomes,
             'expense' => $expenses

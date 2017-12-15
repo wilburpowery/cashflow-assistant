@@ -11,7 +11,7 @@ class DailyBudgetsController extends Controller
     {
         $budget = DailyBudget::fromToday();
 
-        return $budget;
+        return response(['budget' => $budget ?: '']);
     }
 
     public function store()
