@@ -5,13 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class DailyBudget extends Model
+class Payment extends Model
 {
     protected $guarded = [];
 
-    public static function fromToday()
+    protected $casts = [
+        'payed' => 'boolean'
+    ];
+
+    public function client()
     {
-        return self::whereDate('created_at', Carbon::today())->first();
+        return $this->belongsTo(Client::class);
     }
 
     /**
@@ -32,5 +36,15 @@ class DailyBudget extends Model
     public function getTotalAttribute()
     {
         return $this->attributes['total'] / 100;
+    }
+
+    public function setDateAttribute($date)
+    {
+        $this->attributes['date'] = Carbon::parse($date);
+    }
+
+    public function scopeFromToday($query)
+    {
+        return $query->whereDate('created_at', Carbon::today());
     }
 }

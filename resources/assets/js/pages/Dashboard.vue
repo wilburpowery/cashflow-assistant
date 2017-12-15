@@ -1,24 +1,53 @@
 <template>
-      <application-layout>
-          <h1 slot="header">Dashboard</h1>
-            <form action="#">
-                <div class="form-group">
-                    <label for="description">Descripción</label>
-                    <input type="text" class="form-control" name="description" id="description" placeholder="Descripción sobre el movimiento...">
+    <application-layout>
+        <h1 slot="header">Dashboard</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box card">
+                    <h4 class="card-number">$128,421.01</h4>
+                    <p class="card-title">Total ingresos</p>
                 </div>
-                <div class="form-group">
-                    <label for="amount">Precio</label>
-                    <input type="text" class="form-control" name="amount" id="amount" placeholder="1500">
+            </div>
+            <div class="col-md-4">
+                <div class="box card">
+                    <h4 class="card-number">$128,421.01</h4>
+                    <p class="card-title">Total egresos</p>
                 </div>
-                <div class="form-group">
-                    <button class="btn btn-primary">Guardar</button>
+            </div>
+            <div class="col-md-4">
+                <div class="box card">
+                    <h4 class="card-number">$128,421.01</h4>
+                    <p class="card-title">Total Cuentas</p>
                 </div>
-            </form>
-      </application-layout>
+            </div>
+        </div>
+    </application-layout>
 </template>
 
 <script>
-export default {
-}
+    export default {
+    }
 </script>
+
+<style lang="scss" scoped>
+    @import "../../sass/_variables";
+    
+    .box {
+        background-color: #fff;
+        padding: 1em;
+        border-top: 4px solid $brand-primary;
+        box-shadow: 0 2px 3px 0 rgba(0,0,0,.075);
+        border-radius: 5px;
+    }
+
+    .card-number {
+        color: #444;
+        font-weight: 700;
+    }
+
+    .card-title {
+        color: #888;
+        font-weight: 700;
+    }
+</style>
 

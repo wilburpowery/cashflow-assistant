@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Transaction extends Model
 {
@@ -26,5 +27,10 @@ class Transaction extends Model
     public function getTotalAttribute()
     {
         return $this->attributes['total'] / 100;
+    }
+
+    public function scopeFromToday($query)
+    {
+        return $query->whereDate('created_at', Carbon::today());
     }
 }

@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('bootstrap-toggle/js/bootstrap-toggle.min.js');
 
 window.Vue = require('vue');
 import Vuex from 'vuex';
@@ -13,12 +14,16 @@ import store from './store';
 import MenuSidebar from './components/MenuSidebar.vue';
 import ActivitySidebar from './components/ActivitySidebar.vue';
 import vSelect from 'vue-select';
+import Datepicker from 'vue-bootstrap-datetimepicker';
+
 
 Vue.component('application-layout', require('./layouts/ApplicationView.vue'));
 Vue.component('registration-form', require('./components/Auth/Register.vue'));
 Vue.component('back-button', require('./components/BackButton.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('vSelect', vSelect);
+Vue.component('date-picker', Datepicker);
+Vue.component('v-toggle', require('./components/vToggle.vue'));
 
 // Global Event Bus
 window.Events = new Vue();

@@ -6,6 +6,8 @@
 @import "variables";
 
 @import "~font-awesome/scss/font-awesome";
+@import '~eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css';
+@import "~bootstrap-toggle/css/bootstrap-toggle.min.css";
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -52,7 +54,6 @@ body {
   
   .actions {
     opacity: 0;
-    padding: 5px 30px;
   }
 }
 
@@ -72,4 +73,8 @@ body {
 
 .icon-danger {
   background-color: $brand-danger;
+}
+
+.mr-1 {
+  margin-right: 1.25rem;
 }

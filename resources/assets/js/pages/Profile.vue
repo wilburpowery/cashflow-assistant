@@ -96,11 +96,12 @@ export default {
 }
 
 .icon-sm {
-  height: 20px;
-  width: 20px;
+  height: 26px;
+  width: 35px;
 }
 .icon {
-  margin-left: 10px;
+  background: none !important;
+  padding-left: 0;
 }
 .icon.is-error {
   fill: red;

@@ -24,7 +24,7 @@
                     <div class="col-xs-4" v-text="client.name"></div>
                     <div class="col-xs-3" v-text="client.email"></div>
                     <div class="col-xs-2" v-text="client.phone_number"></div>
-                    <div class="col-md-2 actions text-center">
+                    <div class="col-md-2 actions">
                         <i class="fa fa-pencil text-primary icon" @click="show(client)"></i>
                         <i class="fa fa-trash text-danger icon icon-danger" @click="destroy(client)"></i>
                     </div>

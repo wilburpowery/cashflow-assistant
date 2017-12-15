@@ -1,20 +1,11 @@
 <template>
-    <application-layout>
-        <h1 slot="header">Nueva Cuenta Por Cobrar</h1>
+    <application-layout v-if="payment">
+        <h1 slot="header">Cuenta Por Cobrar: {{ payment.id }}</h1>
         
-        <form @submit.prevent="add">
+        <form @submit.prevent="update">
             <div class="form-group">
                 <label>Cliente:</label>
-                <v-select
-                :debounce="1000"
-                :on-search="getOptions"
-                :on-change="chooseClient"
-                :options="options"
-                placeholder="Busca un cliente por su nombre..."
-                label="name"
-                required
-                >
-            </v-select>
+                <input type="text" class="form-control" v-model="payment.client.name" disabled>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -59,44 +50,47 @@
 
 <script>
     export default {
+        created() {
+            if(! this.payment) {
+                this.$router.push({name: 'payments.index'});
+            }
+        },
         data() {
             return {
-                options: [],
-                payment: {
-                    payed: false
-                },
+                payment: this.$route.params.payment,
                 datePickerConfig: {
                     format: 'DD-MM-YYYY',
                     minDate: moment.now()
-                }       
+                }
             }
         },
+
         methods: {
-            getOptions(search, loading) {
-                loading(true)
-                axios.get(`/clients?q=${search}`)
-                .then(response => {
-                    this.options = response.data;
-                    loading(false);
-                }).catch(error => console.log(error));
-            },
-            chooseClient(client) {
-                this.payment.client_id = client.id;
+            fetchPayment() {
+                axios.get(`/payments/${this.$route.params.id}`)
+                    .then(response => {
+                        this.payment = response.data;
+                    }).catch(error => {
+                        this.$router.push({name: 'payments.index'});
+                    })
             },
             togglePayed(value) {
                 this.payment.payed = value;
             },
-            add() {
-                if(! this.payment.client_id) {
-                    this.Alert.error('Oops...', 'Debes escoger un cliente para la nueva cuenta por cobrar!');
-                    return false;
-                }
-                axios.post('/payments', this.payment)
-                .then(response => {
-                    this.Alert.success('Se ha guardado la cuenta por cobrar.')
-                    .then(() => {
-                        this.$router.push({name: 'payments.index'});
-                    })
+
+            update() {
+                axios.patch(`/payments/${this.payment.id}`, {
+                    date: this.payment.date,
+                    total: this.payment.total,
+                    description: this.payment.description,
+                    payed: this.payment.payed
+                }).then(response => {
+                    this.Alert.success('Se ha actualizado la cuenta por cobrar!')
+                        .then(() => {
+                            this.$router.push({name: 'payments.index'});
+                        })
+                }).catch(error => {
+                    this.Alert.error();
                 })
             }
         }

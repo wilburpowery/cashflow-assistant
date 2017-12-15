@@ -68,6 +68,12 @@ const routes = [
         component: require('../pages/payments/Index.vue')
     },
     {
+        path: '/payments/:id',
+        name: 'payments.show',
+        component: require('../pages/payments/Show.vue'),
+        props: true
+    },
+    {
         path: '/payments/create',
         name: 'payments.create',
         component: require('../pages/payments/Add.vue')
@@ -79,7 +85,7 @@ const routes = [
     },
     {
         path: '/settings',
-        name: 'Settings',
+        name: 'settings',
         component: require('../pages/Settings.vue')
     },
     {

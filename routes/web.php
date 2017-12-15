@@ -37,4 +37,15 @@ Route::post('/expenses', 'ExpensesController@store')->name('expenses.store')->mi
 Route::patch('/expenses/{income}', 'ExpensesController@update')->name('expenses.update')->middleware('auth');
 Route::delete('/expenses/{income}', 'ExpensesController@destroy')->name('expenses.destroy')->middleware('auth');
 
+Route::get('/payments', 'PaymentsController@index')->name('payments.index')->middleware('auth');
+Route::get('/payments/{payment}', 'PaymentsController@show')->name('payments.show')->middleware('auth');
+Route::post('/payments', 'PaymentsController@store')->name('payments.store')->middleware('auth');
+Route::patch('/payments/{payment}', 'PaymentsController@update')->name('payments.update')->middleware('auth');
+Route::delete('/payments/{payment}', 'PaymentsController@destroy')->name('payments.destroy')->middleware('auth');
+
+Route::get('/daily-budgets', 'DailyBudgetsController@index')->middleware('auth');
+Route::post('daily-budgets', 'DailyBudgetsController@store')->middleware('auth');
+
+Route::get('/accounting/data', 'AccountingDataController');
+
 Route::get('{view}', 'HomeController@index')->where('view', '(.*)');

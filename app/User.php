@@ -35,4 +35,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Business::class);
     }
+
+    public function addPayment($data)
+    {
+        return Payment::create([
+            'business_id' => $this->business->id,
+            'client_id' => $data['client_id'],
+            'date' => $data['date'],
+            'total' => $data['total'],
+            'description' => $data['description'],
+            'payed' => $data['payed']
+        ]);
+    }
 }
