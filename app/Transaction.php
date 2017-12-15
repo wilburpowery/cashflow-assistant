@@ -31,6 +31,16 @@ class Transaction extends Model
 
     public function scopeFromToday($query)
     {
-        return $query->whereDate('created_at', Carbon::today());
+        return $query->whereDate('created_at', Carbon::today())->where('business_id', auth()->user()->business->id);
+    }
+
+    public function scopeIncomes($query)
+    {
+        return $query->where('transaction_type', 'App\Income');
+    }
+
+    public function scopeExpenses($query)
+    {
+        return $query->where('transaction_type', 'App\Expense');
     }
 }

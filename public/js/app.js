@@ -63655,7 +63655,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "\n.box[data-v-049f0327] {\n  background-color: #fff;\n  padding: 1em;\n  border-top: 4px solid #3088D2;\n  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);\n          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);\n  border-radius: 5px;\n}\n.card-number[data-v-049f0327] {\n  color: #444;\n  font-weight: 700;\n}\n.card-title[data-v-049f0327] {\n  color: #888;\n  font-weight: 700;\n}\n", ""]);
+exports.push([module.i, "\n.box[data-v-049f0327] {\n  background-color: #fff;\n  padding: 1em;\n  border-top: 4px solid #3088D2;\n  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);\n          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);\n  border-radius: 5px;\n}\n.card-number[data-v-049f0327] {\n  color: #444;\n  font-weight: 700;\n}\n.card-title[data-v-049f0327] {\n  color: #888;\n  font-weight: 700;\n}\n.line[data-v-049f0327] {\n  width: 100%;\n  max-width: 7rem;\n  height: 3px;\n  margin: 1rem 0 2rem;\n  background: #11B8AB;\n}\n", ""]);
 
 // exports
 
@@ -63725,8 +63725,75 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    created: function created() {
+        this.fetchStats();
+        this.loadLatestsStats();
+    },
+    data: function data() {
+        return {
+            income: null,
+            expense: null,
+            dailyBudget: {},
+            latestIncomes: [],
+            latestExpenses: []
+        };
+    },
+
+    filters: {
+        toMoney: function toMoney(value) {
+            return window.accounting.formatMoney(value, { symbol: 'CRC', format: '%v %s' }, 2);
+        },
+        formatFromTime: function formatFromTime(time) {
+            return window.moment(time).fromNow();
+        }
+    },
+    methods: {
+        fetchStats: function fetchStats() {
+            var _this = this;
+
+            axios.get('/accounting/data').then(function (response) {
+                _this.income = response.data.income;
+                _this.expense = response.data.expense;
+                _this.dailyBudget = response.data.dailyBudget;
+            });
+        },
+        loadLatestsStats: function loadLatestsStats() {
+            var _this2 = this;
+
+            axios.get('/dashboard/latest').then(function (response) {
+                _this2.latestIncomes = response.data.incomes;
+                _this2.latestExpenses = response.data.expenses;
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        }
+    }
+});
 
 /***/ }),
 /* 174 */
@@ -63744,7 +63811,11 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "box card" }, [
-          _c("h4", { staticClass: "card-number" }, [_vm._v("$128,421.01")]),
+          _c("h4", { staticClass: "card-number" }, [
+            _vm._v(_vm._s(_vm._f("toMoney")(_vm.income)))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "line" }),
           _vm._v(" "),
           _c("p", { staticClass: "card-title" }, [_vm._v("Total ingresos")])
         ])
@@ -63752,7 +63823,11 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "box card" }, [
-          _c("h4", { staticClass: "card-number" }, [_vm._v("$128,421.01")]),
+          _c("h4", { staticClass: "card-number" }, [
+            _vm._v(_vm._s(_vm._f("toMoney")(_vm.expense)) + " ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "line" }),
           _vm._v(" "),
           _c("p", { staticClass: "card-title" }, [_vm._v("Total egresos")])
         ])
@@ -63760,10 +63835,66 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "box card" }, [
-          _c("h4", { staticClass: "card-number" }, [_vm._v("$128,421.01")]),
+          _c("h4", { staticClass: "card-number" }, [
+            _vm._v(_vm._s(_vm._f("toMoney")(_vm.dailyBudget.total)))
+          ]),
           _vm._v(" "),
-          _c("p", { staticClass: "card-title" }, [_vm._v("Total Cuentas")])
+          _c("div", { staticClass: "line" }),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-title" }, [_vm._v("Balance Inicial")])
         ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("h4", [_vm._v("Ingresos Recientes:")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "list-group" },
+          _vm._l(_vm.latestIncomes, function(income) {
+            return _c(
+              "li",
+              { key: income.id, staticClass: "list-group-item" },
+              [
+                _vm._v(
+                  "\n                    " + _vm._s(income.description) + " "
+                ),
+                _c("span", { staticClass: "pull-right" }, [
+                  _vm._v(_vm._s(_vm._f("toMoney")(income.total)))
+                ])
+              ]
+            )
+          })
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("h4", [_vm._v("Egresos Recientes:")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "list-group" },
+          _vm._l(_vm.latestExpenses, function(expense) {
+            return _c(
+              "li",
+              { key: expense.id, staticClass: "list-group-item" },
+              [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(expense.description) +
+                    " "
+                ),
+                _c("span", { staticClass: "pull-right" }, [
+                  _vm._v(_vm._s(_vm._f("toMoney")(expense.total)))
+                ])
+              ]
+            )
+          })
+        )
       ])
     ])
   ])

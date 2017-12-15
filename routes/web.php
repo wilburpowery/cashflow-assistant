@@ -19,6 +19,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('businesses', 'BusinessesController@store')->name('businesses.store');
 
+Route::get('/dashboard/latest', 'DashboardController@latestStats')->middleware('auth');
+
 Route::get('/clients', 'ClientsController@index')->name('clients.index')->middleware('auth');
 Route::get('/clients/{client}', 'ClientsController@show')->name('clients.show')->middleware('auth');
 Route::post('/clients', 'ClientsController@store')->name('clients.store')->middleware('auth');
