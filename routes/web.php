@@ -37,10 +37,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/incomes/{income}', 'IncomesController@destroy')->name('incomes.destroy');
 
     Route::get('/expenses', 'ExpensesController@index')->name('expenses.index');
-    Route::get('/expenses/{income}', 'ExpensesController@show')->name('expenses.show');
+    Route::get('/expenses/{expense}', 'ExpensesController@show')->name('expenses.show');
     Route::post('/expenses', 'ExpensesController@store')->name('expenses.store');
-    Route::patch('/expenses/{income}', 'ExpensesController@update')->name('expenses.update');
-    Route::delete('/expenses/{income}', 'ExpensesController@destroy')->name('expenses.destroy');
+    Route::patch('/expenses/{expense}', 'ExpensesController@update')->name('expenses.update');
+    Route::delete('/expenses/{expense}', 'ExpensesController@destroy')->name('expenses.destroy');
 
     Route::get('/payments', 'PaymentsController@index')->name('payments.index');
     Route::get('/payments/{payment}', 'PaymentsController@show')->name('payments.show');
