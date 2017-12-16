@@ -59443,7 +59443,7 @@ Vue.prototype.goBack = function () {
     __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */].go(-1);
 };
 
-Vue.prototype.isAdmin = window.App.user.is_admin;
+Vue.prototype.isAdmin = window.App.user ? window.App.user.is_admin : false;
 
 
 Vue.prototype.Alert = __WEBPACK_IMPORTED_MODULE_9__utilities__["a" /* Alert */];

@@ -42,7 +42,7 @@ Vue.prototype.goBack = () => {
     router.go(-1);
 };
 
-Vue.prototype.isAdmin = window.App.user.is_admin;
+Vue.prototype.isAdmin = window.App.user ? window.App.user.is_admin : false;
     
 import {Alert} from './utilities';
 Vue.prototype.Alert = Alert;
