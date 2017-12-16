@@ -26,26 +26,34 @@
               <svg class="icon icon-sm is-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" v-else><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM6.7 9.29L9 11.6l4.3-4.3 1.4 1.42L9 14.4l-3.7-3.7 1.4-1.42z"/></svg>
             </div>
           </div>
+
           <div v-else>
             <form @submit.prevent="update">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Nombre</label>
-                    <input type="text" class="form-control" v-model="user.first_name">
+                    <input type="text" class="form-control" v-model="user.name" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="last_name">Apellido</label>
-                    <input type="text" class="form-control" v-model="user.last_name">
+                    <label for="last_name">Correo</label>
+                    <input type="text" class="form-control" v-model="user.email" required>
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" v-model="password" required>
+                <p class="text-muted">Debes ingresar tu contraseña para actualizar tus datos.</p>
+              </div>
 
               <div class="form-group">
-                <button class="btn btn-link">
-                  
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+
+                <button class="btn btn-link" type="button" @click="editing = false">
+                  Cancelar
                 </button>
               </div>
             </form>
@@ -59,9 +67,13 @@
 <script>
 import {mapState} from 'vuex';
 export default {
+  mounted() {
+    document.title = 'Perfíl | ' + this.user.name;
+  },
   data() {
     return {
       editing: false,
+      password: ''
     }
   },
 
@@ -70,8 +82,21 @@ export default {
   },
 
   methods: {
-    editMode() {
-      console.log('Editing');
+    update() {
+      axios.patch(`/users/${this.user.id}`, {
+        name: this.user.name,
+        email: this.user.email,
+        password: this.password
+      }).then(response => {
+        $('#name').text(this.user.name);
+        this.Alert.success('Se ha actualizado su usuario!')
+          .then(() => {
+            this.password = '';
+            this.editing = false;
+          })
+      }).catch(error => {
+        this.Alert.error();
+      })
     }
   }
 }

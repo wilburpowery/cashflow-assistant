@@ -5,16 +5,10 @@
         <hr>
         <form @submit.prevent="update">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label for="last_name">Nombre:</label>
-                        <input type="text" class="form-control" v-model="client.first_name" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="last_name">Apellido:</label>
-                        <input type="text" class="form-control" v-model="client.last_name" required>
+                        <input type="text" class="form-control" v-model="client.name" required>
                     </div>
                 </div>
             </div>

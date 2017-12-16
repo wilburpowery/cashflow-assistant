@@ -175,6 +175,7 @@
   export default {
     mounted() {
       this.fetchAccoutingData();
+      document.title = 'Cierre de Caja';
     },
     data() {
       return {

@@ -35,6 +35,9 @@
 
 <script>
     export default {
+        mounted() {
+            document.title = 'Nuevo Cliente';
+        },
         data() {
             return {
                 client: {}

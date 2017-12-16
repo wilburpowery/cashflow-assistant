@@ -89,6 +89,16 @@ const routes = [
         component: require('../pages/Settings.vue')
     },
     {
+        path: '/users/create',
+        name: 'users.create',
+        component: require('../pages/users/Add.vue')
+    },
+    {
+        path: '/graphs',
+        name: 'graphs',
+        component: require('../pages/Graphs.vue')
+    },
+    {
         path: '*',
         name: '404',
         component: require('../pages/errors/Error404.vue')

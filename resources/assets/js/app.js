@@ -3,6 +3,13 @@ require('bootstrap-toggle/js/bootstrap-toggle.min.js');
 
 window.Vue = require('vue');
 import Vuex from 'vuex';
+import Vuelidate from 'vuelidate';
+import Chart from 'chart.js';
+
+window.Chart = Chart;
+
+Vue.use(Vuelidate)
+
 Vue.use(Vuex);
 
 window.moment = require('moment');
@@ -34,6 +41,8 @@ Vue.prototype.router = router;
 Vue.prototype.goBack = () => {
     router.go(-1);
 };
+
+Vue.prototype.isAdmin = window.App.user.is_admin;
     
 import {Alert} from './utilities';
 Vue.prototype.Alert = Alert;

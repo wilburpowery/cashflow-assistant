@@ -45,6 +45,7 @@
     export default {
         created() {
             this.fetch();
+            document.title = 'Lista de clientes';
         },
         data() {
             return {

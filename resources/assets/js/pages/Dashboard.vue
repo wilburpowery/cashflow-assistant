@@ -37,7 +37,7 @@
             <div class="col-md-6">
                 <h4>Ingresos Recientes:</h4>
                 <ul class="list-group">
-                    <li class="list-group-item" v-for="income in latestIncomes" :key="income.id">
+                    <li class="list-group-item income" v-for="income in latestIncomes" :key="income.id">
                         {{ income.description }} <span class="pull-right">{{ income.total | toMoney }}</span>
                     </li>
                 </ul>
@@ -45,7 +45,7 @@
             <div class="col-md-6">
                     <h4>Egresos Recientes:</h4>
                     <ul class="list-group">
-                        <li class="list-group-item" v-for="expense in latestExpenses" :key="expense.id">
+                        <li class="list-group-item expense" v-for="expense in latestExpenses" :key="expense.id">
                             {{ expense.description }} <span class="pull-right">{{ expense.total | toMoney }}</span>
                         </li>
                     </ul>
@@ -59,6 +59,7 @@
         created() {
             this.fetchStats();
             this.loadLatestsStats();
+            document.title = 'Dashboard';
         },
         data() {
             return {
@@ -125,6 +126,18 @@
         height: 3px;
         margin: 1rem 0 2rem;
         background: #11B8AB;
+    }
+    .income {
+        border-right: 5px solid $brand-success;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        margin-bottom: 10px;
+    }
+    .expense {
+        border-right: 5px solid $brand-danger;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        margin-bottom: 10px;
     }
 </style>
 

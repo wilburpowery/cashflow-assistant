@@ -22,7 +22,7 @@ Route::post('businesses', 'BusinessesController@store')->name('businesses.store'
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/latest', 'DashboardController@latestStats');
 
-    Route::post('/users', 'UsersController@store');
+    Route::patch('/users/{user}', 'UsersController@update');
 
     Route::get('/clients', 'ClientsController@index')->name('clients.index');
     Route::get('/clients/{client}', 'ClientsController@show')->name('clients.show');
@@ -54,6 +54,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/desk-close', 'DeskClosesController@store');
 
     Route::get('/accounting/data', 'AccountingDataController');
+
+    Route::middleware(['must-be-admin'])->group(function () {
+        Route::get('/users', 'UsersController@index');
+        Route::post('/users', 'UsersController@store');
+
+        Route::get('/graphs/incomes', 'GraphsController@income');
+    });
 });
 
 Route::get('{view}', 'HomeController@index')->where('view', '(.*)');
