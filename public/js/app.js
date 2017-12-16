@@ -63748,6 +63748,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {
@@ -63758,7 +63765,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             income: null,
             expense: null,
-            dailyBudget: {},
+            dailyBudget: {
+                total: 0
+            },
             latestIncomes: [],
             latestExpenses: []
         };
@@ -63836,7 +63845,21 @@ var render = function() {
       _c("div", { staticClass: "col-md-4" }, [
         _c("div", { staticClass: "box card" }, [
           _c("h4", { staticClass: "card-number" }, [
-            _vm._v(_vm._s(_vm._f("toMoney")(_vm.dailyBudget.total)))
+            _vm.dailyBudget
+              ? _c("span", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm._f("toMoney")(_vm.dailyBudget.total)) +
+                      "\n                    "
+                  )
+                ])
+              : _c("span", [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm._f("toMoney")(0)) +
+                      "\n                    "
+                  )
+                ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "line" }),

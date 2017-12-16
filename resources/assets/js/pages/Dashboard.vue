@@ -18,7 +18,14 @@
             </div>
             <div class="col-md-4">
                 <div class="box card">
-                    <h4 class="card-number">{{ dailyBudget.total | toMoney }}</h4>
+                    <h4 class="card-number">
+                        <span v-if="dailyBudget">
+                            {{dailyBudget.total | toMoney}}
+                        </span>
+                        <span v-else>
+                                {{0 | toMoney}}
+                        </span>
+                    </h4>
                     <div class="line"></div>
                     <p class="card-title">Balance Inicial</p>
                 </div>
@@ -57,7 +64,9 @@
             return {
                 income: null,
                 expense: null,
-                dailyBudget: {},
+                dailyBudget: {
+                    total: 0
+                },
                 latestIncomes: [],
                 latestExpenses: []
             }  
