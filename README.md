@@ -1,4 +1,6 @@
 # cashflow-assistant
+![](https://styleci.io/repos/108920938/shield)
+
 Proyecto final para el curso de Desarrollo de Servicios y Aplicaciones Web. 
 
 
