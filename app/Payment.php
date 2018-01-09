@@ -2,15 +2,15 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
     protected $guarded = [];
 
     protected $casts = [
-        'payed' => 'boolean'
+        'payed' => 'boolean',
     ];
 
     public function client()
@@ -22,6 +22,7 @@ class Payment extends Model
      * Convert to cents before saving.
      *
      * @param string $value
+     *
      * @return void
      */
     public function setTotalAttribute($value)
@@ -31,7 +32,6 @@ class Payment extends Model
 
     /**
      * Convert the total back to decimal value.
-     *
      */
     public function getTotalAttribute()
     {

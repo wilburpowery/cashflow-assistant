@@ -22,8 +22,8 @@ class DashboardController extends Controller
 
         return response([
             'dailyBudget' => $dailyBudget,
-            'income' => $incomes,
-            'expense' => $expenses
+            'income'      => $incomes,
+            'expense'     => $expenses,
         ]);
     }
 

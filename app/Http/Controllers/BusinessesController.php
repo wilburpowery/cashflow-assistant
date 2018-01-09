@@ -9,8 +9,8 @@ class BusinessesController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'name' => 'required',
-            'description' => 'required'
+            'name'        => 'required',
+            'description' => 'required',
         ]);
 
         $business = Business::create($data);

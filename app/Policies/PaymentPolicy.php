@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
+use App\Payment;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Payment;
 
 class PaymentPolicy
 {

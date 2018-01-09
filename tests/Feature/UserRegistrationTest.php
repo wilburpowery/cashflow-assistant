@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class UserRegistrationTest extends TestCase
 {
@@ -15,9 +15,9 @@ class UserRegistrationTest extends TestCase
         $business = $this->registerFirstUser();
 
         $this->assertDatabaseHas('users', [
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
-            'business_id' => $business['id']
+            'name'        => 'John Doe',
+            'email'       => 'john@example.com',
+            'business_id' => $business['id'],
             ]);
     }
 
@@ -27,24 +27,24 @@ class UserRegistrationTest extends TestCase
         $this->registerFirstUser();
 
         $this->assertDatabaseHas('users', [
-            'email' => 'john@example.com',
-            'is_admin' => true
+            'email'    => 'john@example.com',
+            'is_admin' => true,
         ]);
     }
 
     protected function registerFirstUser()
     {
         $business = $this->postJson(route('businesses.store'), [
-            'name' => 'Test Business',
-            'description' => 'A business dedicated to being used for testing.'
+            'name'        => 'Test Business',
+            'description' => 'A business dedicated to being used for testing.',
             ])->json()['business'];
 
         $this->post(route('register'), [
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
-            'password' => 'secret',
+            'name'                  => 'John Doe',
+            'email'                 => 'john@example.com',
+            'password'              => 'secret',
             'password_confirmation' => 'secret',
-            'business_id' => $business['id']
+            'business_id'           => $business['id'],
             ])->assertRedirect('/home');
 
         return $business;

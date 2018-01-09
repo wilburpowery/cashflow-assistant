@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Transaction;
+use Illuminate\Http\Request;
 
 class ExpensesController extends Controller
 {
@@ -19,16 +19,16 @@ class ExpensesController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'type' => 'required',
+            'type'        => 'required',
             'description' => 'required',
-            'total' => 'required|numeric'
+            'total'       => 'required|numeric',
             ]);
 
         auth()->user()->business->transactions()->create([
-                'type' => $data['type'],
-                'description' => $data['description'],
-                'total' => $data['total'],
-                'transaction_type' => 'App\Expense'
+                'type'             => $data['type'],
+                'description'      => $data['description'],
+                'total'            => $data['total'],
+                'transaction_type' => 'App\Expense',
                 ]);
     }
 
@@ -42,9 +42,9 @@ class ExpensesController extends Controller
     public function update(Transaction $expense)
     {
         $data = request()->validate([
-                    'type' => 'required',
+                    'type'        => 'required',
                     'description' => 'required',
-                    'total' => 'required'
+                    'total'       => 'required',
                     ]);
 
         $this->authorize('update', $expense);

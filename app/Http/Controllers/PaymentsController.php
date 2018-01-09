@@ -21,12 +21,12 @@ class PaymentsController extends Controller
                         'required',
                         Rule::exists('clients', 'id')->where(function ($query) {
                             $query->where('business_id', auth()->user()->business->id);
-                        })
+                        }),
                     ],
-            'date' => 'required|date',
-            'total' => 'required',
+            'date'        => 'required|date',
+            'total'       => 'required',
             'description' => 'required',
-            'payed' => 'required|boolean'
+            'payed'       => 'required|boolean',
         ]);
 
         $payment = auth()->user()->addPayment($data);
@@ -46,10 +46,10 @@ class PaymentsController extends Controller
         $this->authorize('update', $payment);
 
         $data = request()->validate([
-            'date' => 'required|date',
-            'total' => 'required',
+            'date'        => 'required|date',
+            'total'       => 'required',
             'description' => 'required',
-            'payed' => 'required|boolean'
+            'payed'       => 'required|boolean',
         ]);
 
         $payment->update($data);
@@ -61,6 +61,7 @@ class PaymentsController extends Controller
     {
         $this->authorize('delete', $payment);
         $payment->delete();
+
         return response('Deleted', 202);
     }
 }

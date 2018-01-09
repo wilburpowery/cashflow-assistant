@@ -10,7 +10,7 @@ class Business extends Model
     protected $guarded = [];
 
     /**
-     * Users relationship
+     * Users relationship.
      */
     public function users(): HasMany
     {
@@ -23,7 +23,7 @@ class Business extends Model
     }
 
     /**
-     * Daily Budgets relationship
+     * Daily Budgets relationship.
      */
     public function dailyBudgets()
     {
@@ -31,7 +31,7 @@ class Business extends Model
     }
 
     /**
-     * Transactions relationship
+     * Transactions relationship.
      */
     public function transactions()
     {
@@ -41,9 +41,9 @@ class Business extends Model
     public function addClient($data)
     {
         return $this->clients()->create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone_number' => $data['phone_number']
+            'name'         => $data['name'],
+            'email'        => $data['email'],
+            'phone_number' => $data['phone_number'],
         ]);
     }
 }
