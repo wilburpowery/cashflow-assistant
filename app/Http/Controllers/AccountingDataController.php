@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Transaction;
 use App\DailyBudget;
 use App\Desk;
+use App\Transaction;
 
 class AccountingDataController extends Controller
 {
@@ -24,9 +24,9 @@ class AccountingDataController extends Controller
 
         return response([
             'alreadyHasClosedDesk' => Desk::hasAlreadyBeenClosed(),
-            'dailyBudget' => $dailyBudget,
-            'income' => $incomes,
-            'expense' => $expenses
+            'dailyBudget'          => $dailyBudget,
+            'income'               => $incomes,
+            'expense'              => $expenses,
         ]);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\DailyBudget;
+use Illuminate\Http\Request;
 
 class DailyBudgetsController extends Controller
 {
@@ -17,12 +17,12 @@ class DailyBudgetsController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'daily_budget' => 'required|numeric'
+            'daily_budget' => 'required|numeric',
         ]);
 
         $budget = DailyBudget::create([
             'business_id' => auth()->user()->business->id,
-            'total' => $data['daily_budget']
+            'total'       => $data['daily_budget'],
         ]);
 
         return $budget;

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class CreateClientsTest extends TestCase
 {
@@ -19,10 +19,10 @@ class CreateClientsTest extends TestCase
         $client = $this->postJson(route('clients.store'), $client->toArray())->assertSuccessful()->json();
 
         $this->assertDatabaseHas('clients', [
-            'id' => $client['id'],
+            'id'         => $client['id'],
             'first_name' => $client['first_name'],
-            'last_name' => $client['last_name'],
-            'email' => $client['email']
+            'last_name'  => $client['last_name'],
+            'email'      => $client['email'],
         ]);
     }
 }

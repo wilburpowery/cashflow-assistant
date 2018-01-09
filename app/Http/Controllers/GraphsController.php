@@ -14,7 +14,7 @@ class GraphsController extends Controller
 
         return [
             'Ingresos' => $income,
-            'Egresos' => $expense
+            'Egresos'  => $expense,
         ];
     }
 }

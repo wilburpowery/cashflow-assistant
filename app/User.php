@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Exceptions\DeskWasAlreadyClosed;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'is_admin' => 'boolean'
+        'is_admin' => 'boolean',
     ];
 
     public function business()
@@ -41,11 +41,11 @@ class User extends Authenticatable
     {
         return Payment::create([
             'business_id' => $this->business->id,
-            'client_id' => $data['client_id'],
-            'date' => $data['date'],
-            'total' => $data['total'],
+            'client_id'   => $data['client_id'],
+            'date'        => $data['date'],
+            'total'       => $data['total'],
             'description' => $data['description'],
-            'payed' => $data['payed']
+            'payed'       => $data['payed'],
         ]);
     }
 
@@ -56,20 +56,20 @@ class User extends Authenticatable
         }
 
         return Desk::create([
-            'business_id' => $this->business->id,
-            'initial_balance' => $data['initial_balance'],
-            'income' => $data['income'],
-            'expense' => $data['expense'],
-            'transfers' => $data['transfers'],
-            'card_payments' => $data['card_payments'],
-            'earn_sp' => $data['earn_sp'],
-            'deposit_sp' => $data['deposit_sp'],
-            'commission_sp' => $data['commission_sp'],
-            'refills' => $data['refills'],
+            'business_id'        => $this->business->id,
+            'initial_balance'    => $data['initial_balance'],
+            'income'             => $data['income'],
+            'expense'            => $data['expense'],
+            'transfers'          => $data['transfers'],
+            'card_payments'      => $data['card_payments'],
+            'earn_sp'            => $data['earn_sp'],
+            'deposit_sp'         => $data['deposit_sp'],
+            'commission_sp'      => $data['commission_sp'],
+            'refills'            => $data['refills'],
             'commission_refills' => $data['commission_refills'],
-            'cash_box' => $data['cash_box'],
-            'final_balance' => $data['final_balance'],
-            'real_balance' => $data['real_balance']
+            'cash_box'           => $data['cash_box'],
+            'final_balance'      => $data['final_balance'],
+            'real_balance'       => $data['real_balance'],
         ]);
     }
 }

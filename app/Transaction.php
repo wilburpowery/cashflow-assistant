@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
@@ -13,6 +13,7 @@ class Transaction extends Model
      * Convert to cents before saving.
      *
      * @param string $value
+     *
      * @return void
      */
     public function setTotalAttribute($value)
@@ -22,7 +23,6 @@ class Transaction extends Model
 
     /**
      * Convert the total back to decimal value.
-     *
      */
     public function getTotalAttribute()
     {

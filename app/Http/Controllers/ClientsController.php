@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Client;
 
 class ClientsController extends Controller
 {
@@ -12,6 +12,7 @@ class ClientsController extends Controller
     {
         if ($search = request('q')) {
             $client = Client::where('name', 'like', "%$search%")->get();
+
             return $client;
         }
 
@@ -23,15 +24,15 @@ class ClientsController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'name' => 'required|string|min:1',
+            'name'  => 'required|string|min:1',
             'email' => [
                 'required',
                 'email',
                 Rule::unique('clients')->where(function ($query) {
                     return $query->where('business_id', auth()->user()->business->id);
-                })
+                }),
             ],
-            'phone_number' => 'required'
+            'phone_number' => 'required',
         ]);
 
         $client = auth()->user()->business->addClient($data);
@@ -51,15 +52,15 @@ class ClientsController extends Controller
         $this->authorize('update', $client);
 
         $data = request()->validate([
-            'name' => 'required|string|min:1',
+            'name'  => 'required|string|min:1',
             'email' => [
                 'required',
                 'email',
                 Rule::unique('clients')->ignore($client->id)->where(function ($query) {
                     return $query->where('business_id', auth()->user()->business->id);
-                })
+                }),
             ],
-            'phone_number' => 'required'
+            'phone_number' => 'required',
         ]);
 
         $client->update($data);
